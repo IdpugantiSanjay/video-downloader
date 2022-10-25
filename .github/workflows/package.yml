@@ -60,3 +60,4 @@ jobs:
       with:
         upload_url: ${{ steps.create-new-release.outputs.upload_url }}
         asset_path: ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+        asset_name: video-downloader-cli${{ steps.version.outputs.version-without-v }}
