@@ -58,7 +58,6 @@ jobs:
         filename: video-downloader-cli-v${{ steps.version.outputs.version-without-v }}.zip
         path: ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
         
-        
     - name: Upload release asset
       uses: actions/upload-release-asset@v1
       env:
