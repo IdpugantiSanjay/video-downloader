@@ -2,8 +2,8 @@ name: "Create a package"
 
 on:
   push:
-    branches:
-      - dev
+    tags:
+    - 'v*'
 
     
 env:
