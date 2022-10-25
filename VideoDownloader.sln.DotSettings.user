@@ -1,0 +1,13 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/home/sanjay/.cache/JetBrains/Rider2022.2/resharper-host/temp/Rider/vAny/CoverageData/_VideoDownloader.-63441096/Snapshot/snapshot.utdcvr</s:String>
+	
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b1752695_002D9c09_002D4203_002Daa0f_002Dfec65ba9011e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ShouldReturnListOfUrls" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/home/sanjay/Work/RiderProjects/VideoDownloader/VideoDownloader.Cli.Test" Presentation="&amp;lt;VideoDownloader.Cli.Test&amp;gt;" /&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c54fc98e_002D8e32_002D4d21_002D954f_002Db7b79f5fabb7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ShouldReturnListOfUrls #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::E648EE66-B4B2-4694-8614-3E6A415AA646::net6.0::VideoDownloader.Cli.Test.DownloadsUrlParserTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::E648EE66-B4B2-4694-8614-3E6A415AA646::net6.0::VideoDownloader.Cli.Test.DownloadMultipleFilesTests.Download&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::E648EE66-B4B2-4694-8614-3E6A415AA646::net6.0::VideoDownloader.Cli.Test.DownloadMultipleFilesTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

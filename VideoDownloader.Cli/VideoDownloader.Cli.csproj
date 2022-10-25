@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+    
+    
+    <PropertyGroup>
+        <PublishSingleFile>true</PublishSingleFile>
+        <RuntimeIdentifier>fedora-x64</RuntimeIdentifier>
+        <PlatformTarget>x64</PlatformTarget>
+        <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Roslyn.System.IO.Abstractions.Analyzers" Version="12.2.19">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Serilog" Version="2.12.0" />
+      <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+      <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+      <PackageReference Include="System.IO.Abstractions" Version="17.2.3" />
+      <PackageReference Include="System.IO.Abstractions.TestingHelpers" Version="17.2.3" />
+    </ItemGroup>
+
+</Project>

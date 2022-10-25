@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Publish VideoDownloader.Cli to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
+    <riderPublish configuration="Release" platform="Any CPU" produce_single_file="true" runtime="linux-x64" self_contained="true" target_folder="../publish" target_framework="net6.0" uuid_high="4776755016929002269" uuid_low="-8767062408887121598" />
+    <method v="2" />
+  </configuration>
+</component>
