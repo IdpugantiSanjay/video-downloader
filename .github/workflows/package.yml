@@ -2,8 +2,9 @@ name: "Create a package"
 
 on:
   push:
-    tags:
-    - 'v*'
+    branches:
+      - dev
+
     
 env:
   PROJECT_PATH: 'VideoDownloader.Cli/VideoDownloader.Cli.csproj'
