@@ -1,6 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Diagnostics;
 using System.IO.Abstractions;
+using System.Runtime.InteropServices;
+using Humanizer;
 
 var environmentVariableNames = new
 {
@@ -20,7 +23,31 @@ var parsed = await parser.Parse();
 
 var d = new DownloadMultipleFiles(client, new FileSystem(),
     Path.Join(downloadPath, parsed.FolderName));
+
+SendNotification($"⏳ Started Downloading {parsed.FolderName}");
+var stopwatch = new Stopwatch();
+
+stopwatch.Start();
+
 await d.Download(parsed.Urls);
+
+stopwatch.Stop();
+
+SendNotification(
+    $"⌛ Completed Downloading {parsed.FolderName}. Took {stopwatch.Elapsed.Humanize()}");
+
+void SendNotification(string message)
+{
+    if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) return;
+
+    using var process = Process.Start(
+        new ProcessStartInfo
+        {
+            FileName = "notify-send",
+            ArgumentList = { message }
+        });
+    process.WaitForExit();
+}
 
 public sealed class DownloadsUrlParser
 {
