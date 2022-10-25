@@ -13,6 +13,7 @@
     <PropertyGroup>
         <PublishSingleFile>true</PublishSingleFile>
         <PlatformTarget>x64</PlatformTarget>
+        <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
         <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     </PropertyGroup>
 
