@@ -1,0 +1,69 @@
+name: "Create a package"
+
+on:
+  push:
+    tags:
+    - 'v*'
+    
+env:
+  PROJECT_PATH: 'VideoDownloader.Cli/VideoDownloader.Cli.csproj'
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
+  NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
+  
+jobs:
+  package:
+    name: 'Package'
+    runs-on: 'ubuntu-22.04'
+    steps:
+    - name: 'Checkout'
+      uses: actions/checkout@v2
+      
+    - name: 'Install dotnet'
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+        
+    - name: 'Restore packages'
+      run: dotnet restore ${{ env.PROJECT_PATH }}
+      
+    - name: 'Build project'
+      run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release
+      
+    - name: 'Get Version'
+      id: version
+      uses: battila7/get-version-action@v2
+      
+    - name: 'Publish project'
+      run: dotnet publish ${{ env.PROJECT_PATH }} --no-restore --no-build --include-symbols --runtime fedora-x64 --self-contained --configuration Release -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+      
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3.1.1
+      with:
+        name: video-downloader-cli
+        path: ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+        
+    - name: 'Create GitHub Release'
+      uses: actions/create-release@v1
+      id: create-new-release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with: 
+        tag_name: v${{ steps.version.outputs.version-without-v }}
+        release_name: v${{ steps.version.outputs.version-without-v }}
+        
+    - name: Archive site content
+      uses: thedoctor0/zip-release@master
+      with:
+        filename: video-downloader-cli-v${{ steps.version.outputs.version-without-v }}.zip
+        path: ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+        
+        
+    - name: Upload release asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+        asset_path: ./video-downloader-cli-v${{ steps.version.outputs.version-without-v }}.zip
+        asset_name: video-downloader-cli-v${{ steps.version.outputs.version-without-v }}.zip
+        asset_content_type: application/zip
