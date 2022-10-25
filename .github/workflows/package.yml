@@ -1,8 +1,11 @@
 name: "Create a package"
 
 on:
-  release:
-    types: [created]
+  push:
+    # Pattern matched against refs/tags
+    tags:        
+      - '*'           # Push events to every tag not containing /
+
 
     
 env:
