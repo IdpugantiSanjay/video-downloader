@@ -8,7 +8,7 @@ on:
     
 env:
   PROJECT_PATH: 'VideoDownloader.Cli/VideoDownloader.Cli.csproj'
-  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
   NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
   
 jobs:
@@ -35,7 +35,8 @@ jobs:
       uses: battila7/get-version-action@v2
       
     - name: 'Publish project'
-      run: dotnet publish ${{ env.PROJECT_PATH }} --no-restore --no-build --runtime fedora-x64 --self-contained --configuration Release -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+      run: dotnet publish ${{ env.PROJECT_PATH }} --no-restore --no-build --runtime fedora-x64 --self-contained --configuration Release -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --output ${{ env.
+      }}
       
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3.1.1
