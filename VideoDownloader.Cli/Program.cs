@@ -24,7 +24,7 @@ var parsed = await parser.Parse();
 var d = new DownloadMultipleFiles(client, new FileSystem(),
     Path.Join(downloadPath, parsed.FolderName));
 
-SendNotification($"⏳ Started Downloading {parsed.FolderName}");
+SendNotification($"⏳ Downloading {parsed.FolderName}");
 var stopwatch = new Stopwatch();
 
 stopwatch.Start();
@@ -34,7 +34,7 @@ await d.Download(parsed.Urls);
 stopwatch.Stop();
 
 SendNotification(
-    $"⌛ Completed Downloading {parsed.FolderName}. Took {stopwatch.Elapsed.Humanize()}");
+    $"⌛ Downloaded {parsed.FolderName}. Took {stopwatch.Elapsed.Humanize()}");
 
 void SendNotification(string message)
 {
