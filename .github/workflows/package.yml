@@ -37,7 +37,7 @@ jobs:
       uses: battila7/get-version-action@v2
       
     - name: 'Publish project'
-      run: dotnet publish ${{ env.PROJECT_PATH }} --no-restore --no-build --runtime fedora-x64 --self-contained --configuration Release -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+      run: dotnet publish ${{ env.PROJECT_PATH }} --no-restore --no-build --runtime linux-x64 --self-contained --configuration Release -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
       
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3.1.1
